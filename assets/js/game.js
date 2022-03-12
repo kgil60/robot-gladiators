@@ -3,13 +3,11 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-console.log(playerName, playerHealth, playerAttack);
-
-var enemyName = "Roberto";
+var enemyNames = ['Roberto', 'Amy Android', 'Robo Trumble'];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-function fight() {
+function fight(enemyName) {
     // Alert players when round is starting
     window.alert('Welcome to Robot Gladiators!');
 
@@ -23,10 +21,10 @@ function fight() {
         console.log(`${playerName} attacked ${enemyName}. ${enemyName} now has ${enemyHealth} health remaining.`);
 
         // check player health
-        if (playerHealth <= 0) {
-            window.alert(`${playerName} has been defeated!`);
+        if (enemyHealth <= 0) {
+            window.alert(`${enemyName} has been defeated!`);
         } else {
-            window.alert(`${playerName} still has ${playerHealth} health left.`)
+            window.alert(`${enemyName} still has ${enemyHealth} health left.`)
         }
 
         // Subtract the value of enemyAttack from the value of playerHealth and use result to update playerHealth value
@@ -36,10 +34,10 @@ function fight() {
         console.log(`${enemyName} attacked ${playerName}. ${playerName} now has ${playerHealth} health remaining.`);
 
         // check enemy's health
-        if (enemyHealth <= 0) {
-            window.alert(`${enemyName} has been defeated!`);
+        if (playerHealth <= 0) {
+            window.alert(`${playerName} has been defeated!`);
         } else {
-            window.alert(`${enemyName} still has ${enemyHealth} health left.`);
+            window.alert(`${playerName} still has ${playerHealth} health left.`);
         }
     } else if (promptFight === "skip" || promptFight === "SKIP") {
         var confirmSkip = window.confirm("Are you sure you'd like to skip the fight?");
@@ -59,5 +57,7 @@ function fight() {
     }
 }
 
-fight();
+for (let i=0; i<enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
 
